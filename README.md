@@ -1,3 +1,3 @@
 # UCF_CODE
-lorem ipsum dolor sit amet
+Code files and projects created while in UCF BS class of 27.
 
