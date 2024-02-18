@@ -18,7 +18,9 @@ const int STRING_SIZE = 100002;
 
 int main () {
     // declaring variables: initializing freq arrays and letters required to zero
-    int freq1[LTTRS_IN_ALPHABET] = {0}, freq2[LTTRS_IN_ALPHABET] = {0}, letters_required = 0;
+    int freq1[LTTRS_IN_ALPHABET], freq2[LTTRS_IN_ALPHABET], letters_required = 0;
+    memset( freq1, 0, sizeof(freq1));
+    memset( freq2, 0, sizeof(freq2));
 
     // dynamically allocating memory for two strings of STRING max SIZE via malloc
     char* string1 = (char*) malloc(STRING_SIZE * sizeof(char));
