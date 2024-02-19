@@ -63,54 +63,43 @@ int main() {
 }
 
 // Pre-condition: str is a valid C String.
-// Post-condition: All permutations of str (assuming all distinct
-//                 characters) will be printed.
+// Post-condition: All permutations of str (assuming all distinct characters) will be printed.
 void ListPermutations(char str[]) {
      
-     // Call the appropriate recursive function with the correct
-     // parameters.
+     // Call the appropriate recursive function with the correct parameters.
      RecursivePermute(str, 0);
 }
 
-// Pre-condition: str is a valid C String, and k is non-negative and
-//                less than or equal to the length of str.
-// Post-condition: All of the permutations of str with the first k
-//                 characters fixed in their original positions are
-//                 printed. Namely, if n is the length of str, then
-//                 (n-k)! permutations are printed.
+// Pre-condition: str is a valid C String, and k is non-negative and less than or equal to the length of str. 
+// Post-condition: All of the permutations of str with the first k characters fixed in their original positions are 
+// printed. Namely, if n is the length of str, then (n-k)! permutations are printed.
 void RecursivePermute(char str[], int k) {
      
      int j;
      
-     // Base-case: Since all letters are fixed, we can ONLY print
-     // what's stored in str.
+     // Base-case: Since all letters are fixed, we can ONLY print what's stored in str.
      if (k == strlen(str))
          printf("%s\n", str);
          
      else {
           
-         // Loop through each possible starting letter for index k,
-         // the first index for which we have a choice.
+         // Loop through each possible starting letter for index k, the first index for which we have a choice.
          for (j=k; j<strlen(str); j++) {
          
              // Place the character stored in index j in location k.
              ExchangeCharacters(str, k, j);
              
-             // Print out all of the permutations with that character
-             // just chosen above fixed. 
+             // Print out all of the permutations with that character just chosen above fixed. 
              RecursivePermute(str, k+1);
              
-             // Put the original character that used to be there back
-             // in its place.
+             // Put the original character that used to be there back in its place.
              ExchangeCharacters(str, j, k);
          }
      }
 }
 
-// Pre-condition: str is a valid C String and i and j are valid indexes
-//                to that string.
-// Post-condition: The characters at index i and j will be swapped in
-//                 str.
+// Pre-condition: str is a valid C String and i and j are valid indexes to that string.
+// Post-condition: The characters at index i and j will be swapped in str. 
 void ExchangeCharacters(char str[], int i, int j) {
      
     char temp = str[i];
