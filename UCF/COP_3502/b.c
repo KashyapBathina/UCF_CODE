@@ -25,6 +25,8 @@ dynamic:
             free(array[i]); free(array);
 
 linked list:
+    important note: if current is a pointer to item, and other is a pointer to item in list, then current = other->next does not change the actual value of current, but changes the current to point
+        to other->next, this is b/c pointer like current, temp, t, other manipulate the pointers; this is b/c type pointer, so can can only change pointers(next) in struct, ! change ints
     seq of connected nodes containing data items, each node contains connection to next link; use in lieu of array b/c array stores in contiguous spaces, fixed size, and insertion/deletion
     difficult b/c if want to shift 5th element in 1000n array, must shift 995 indexes after 5; linked lists dynamic with length increase and decrease possible, !!contiguos, and inser/del only
     req few node changes; many types:
