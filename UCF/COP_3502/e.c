@@ -33,6 +33,10 @@ recursive relations:
 		closed form: 
 			eq-1) T(n) = T(n/2) + 3     eq-2) T(n/2) = T(n/4) + 3     eq-3) T(n/4) = T(n/8) + 3, then subsituting T(n) = T(n/8) + 2*3 or T(n) = T(n/2^k) + 3*k, we want n/2^k=1, as
 			thats the only T(..) we know, so n/2^k = 1 and n=2^k, we also want k, so log(n) = log(2^k) -> log(n) = k, so T(n) = T(2^k/2^k) + 3*log(n) = 1 + 3logn, so O(logn)
+	math example: T(n) = 3T(n/2) + n^2 adn aso given SUM(0->infinity) 3/4 = 4 and 3^log_2n = n^log_23 and that log 2^3<2 and that T(1)=1 therfore:
+		eq-1) T(n) = 3T(n/2) + n^2     eq-2) T(n/2) = 3T(n/4) + (n/2)^2, therfore plugging back in: T(n) = 3( 3T(n/4) + (n/2)^2) + n^2 = 9T(n/4) + 3n^2/4 + n^2 or general form, ->
+		T(n) = 3^k T(n/2^k) + n^2 (SUM(0->k-1) 3/4^i, we know T(1)=1, so we want n/2^k=1 -> n=2^k and k=logn, plugging in and bounding (max O(n)) summation to infity insted of k-1,
+		we get T(n) = 3^logn T(1) + n^2(SUM(0->infinty) 3/4^i) = n^logn + 4n^2, therfore O(n^2)
 	note: we consider arithmetic operations here while we don't in the algorithm analysis b/c for loops, the num arithmetic operations is constant, so just O(kn) -> O(n) and just
 	depends on and scales with n; for recursion, the num arithmetic operations per call depends on the n and so the operations varies, thus must consider recursiv calls and operat
 */
