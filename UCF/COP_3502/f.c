@@ -33,8 +33,7 @@ sorting algorithms:
     quick select: best and average case O(n) & worst case O(n^2); not sorting algorithm, but to find k-th smallest element in unordered set; like quick sort but don't need to 
         actually sort entire arr; do same partition by picking pivot but now only recur for the part that contains the k-th smallest element (if partition index>k, recur left else
         right); best case o(n) if choose k-th element as pivot; worst case O(n^2) if look through all n on first, then n-1 ... (select sort); average case remove half each time so
-        n + n/2 + n/4 ... = 2n - 1 = O(n)
-
+        n + n/2 + n/4 ... = 2n - 1 = O(n)   
 */
 
 
