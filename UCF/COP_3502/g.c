@@ -18,11 +18,23 @@ binary trees:
         postorder: root visited after left and right subtrees; code--preorder(treenode *p){ preorder(p->left); preorder(p->right); printf(data);}; ie a b(left) c(right) -> bca, like
             for inorder, means that each node considered as root, meaning that it recurses such that it goes far most left first b/c it repetedly goes p->left until leaf then prints
             left then right then parent; 
-    purpose: not just random alphabets, instead for ordering numbers; for each node n, vals in left are all < n and all vals in right are > n; so insted of O(n) for serching, halfing 
-        search time is O(logn) so binary search tree essentially imbeds binary search for each node, hence the name
+    binary search tree: not just random alphabets, instead for ordering numbers; for each node n, vals in left are all < n and all vals in right are > n; so insted of O(n) for serch
+        -ing, halfing search time is O(logn) so binary search tree essentially imbeds binary search for each node, hence the name
     insertion: must first allocate new node--create_node(int val) {1. deaclaring pointer node tree_node* temp; 2. allocating space temp=malloc(...) 3. initializing fields temp->data
         =val; temp->left=null; right... 4. returning pointer to new node return temp}; then can insert--must maintain ordering smaller in left and larger right by starting @ root, go
         right if > root, left if < root, and keep going til empty position; 
+        code: create new node, find parent, attach new node as leaf, find position using recursion or loop, param-insert(my_root,temp_node) if my_root null, tree empty & just return
+            temp_node as it will be assigned to root and already defined it to be leaf (no children when initializing), else see wich tree to insrt by cmparin temp_node to root data
+            and based on comparison, recurs insert left or right: for example if > root, the insert right code: if(element->data > root->data) {if (root->data != NULL) root-right =
+            insert(root->right, element)      else root->right=element;} do similar if < root->data then return root; here there are two cases 1) there is a subtree already on right
+            or 2) nothing on the right and so place directly, what 1) does is alter the right or left subtree recursively then set the root-right (where root changing b/c of recurs)
+            to the altered subtree and when it does come upon a place where it can insert it does 2)
+        when testing to see if tree correct, print tree in in-order traversal search to see if produce data in sorted order
+    sum of nodes: one way is to traverse and sum, but easier way by adding root vals and recurs adding left and right, code: int add(node *cur_ptr) {if (cur_ptr != NULL) return cur_
+        ptr->data + add(cur_ptr->left) + add(cur_ptr->right)}
+    search: to see if val in tree, if(root null) return 0, else check root, if val in root (root here changes to each node b/c recursv) return 1, else if val < than root, search in
+        left else search right; returns 1 if found else 0; 
+        code: int find(node *cur_ptr, int val) {if(cur_ptr=null) {if(cur_ptr->data=val) return 1; if(val<cur_ptr->data) return find(cur_ptr->left, val); else (right)} else return 0}
 
 heaps:
     lorem ipsum
