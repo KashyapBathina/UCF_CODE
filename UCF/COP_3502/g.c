@@ -35,6 +35,11 @@ binary trees:
     search: to see if val in tree, if(root null) return 0, else check root, if val in root (root here changes to each node b/c recursv) return 1, else if val < than root, search in
         left else search right; returns 1 if found else 0; 
         code: int find(node *cur_ptr, int val) {if(cur_ptr=null) {if(cur_ptr->data=val) return 1; if(val<cur_ptr->data) return find(cur_ptr->left, val); else (right)} else return 0}
+    deletions: not simple, three cases: deleting leaf node, node w 1 child, node w 2 child; difficult b/c must change entire subtrees if children b/c need to link children again
+        leaf deletion: easy, start by identifying parent of node we want to delete, then eiether free(parent->left) or free(parent->right) then update the p->left || p->right = null
+            
+        one child deletion:
+        two child deletion:
 
 heaps:
     lorem ipsum
