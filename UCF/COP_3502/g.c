@@ -37,9 +37,24 @@ binary trees:
         code: int find(node *cur_ptr, int val) {if(cur_ptr=null) {if(cur_ptr->data=val) return 1; if(val<cur_ptr->data) return find(cur_ptr->left, val); else (right)} else return 0}
     deletions: not simple, three cases: deleting leaf node, node w 1 child, node w 2 child; difficult b/c must change entire subtrees if children b/c need to link children again
         leaf deletion: easy, start by identifying parent of node we want to delete, then eiether free(parent->left) or free(parent->right) then update the p->left || p->right = null
-            
-        one child deletion:
-        two child deletion:
+        one child deletion: also easy, deletion just lifts by on level, find parent of deletion, the one way is parent->right = parent->right->right and etc for left/right
+        two child deletion: not easy, imagine node a with left child b, where b children c and d, cannot just delete b and raise both its children as only a left only 1 pointer, so
+            insted you need to replace deleted with val that still maintains binary tree property, should replace the deleted node with either max of left subtree of deleted or min
+            of right subtree of deleted; thus copy one of these to the position of deleted and free the place where that max or min was previously; the reason behind this is b/c we 
+            are guaranteed this node has at most 1 child (which is easier to delete as shown above), the reason at most 1 is given, ie for the max left, there canot be a node right
+            to that max left node, this is b/c already the max so cannot be max if child is greater; similar for min right, cannot be min right and also have left children which is
+            smaller; in the case that there is 1 child for that max left or min right, easy, just elevate/raise up position like for one child above b/c subtree alwys either > or <
+        auxiliary functions: many functs req for deletion:
+            findnode: returns pointer to node in tree that stores particular val, same as search func from before but insted if found, returns pointer to node insted of 1 else null
+            parent: finds parent of given node in binary tree, since need to know parent of deletion so we can modify left and right child takes in root and pointer to node want to
+            delete: parent(root, node){if(root null or is the node we want to delete) return null; if(root left || right is node) return root; if (node < root) return parent(root->
+            left, node); else if(node > root) return parent(root->right, node); return null (\\extraneous cases)}
+            minval: finds min val in given tree, in case 2 children deletion like above, takes in root and retrns pointer to min val, minval(root){if(root->left==null) return root;
+            else return minval(root->left);
+            maxval: finds max val in given tree, like above maxval(root){if(root->right==null) return root; else return maxval(root->right);
+            isleaf: determines if node leaf or !, to dtermine how many children when deleting, isleaf(node) {return (node->left==null && node->right==null)};
+            hasonlyleftchild: name exaplains, for determning how many children (also usful to find which side child): isleaf(node) {return (node->left!=null && node->right==null)};
+            hasonlyrightchild: name exaplains, for above deletion and same as above: isleaf(node) {return (node->left==null && node->right!=null)};
 
 heaps:
     lorem ipsum
