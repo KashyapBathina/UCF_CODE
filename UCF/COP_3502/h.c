@@ -47,6 +47,33 @@ trie:
     deleting strings: multiple cases: 1) if string not present, then delete not modifying 2) if string is prefix of another, ie deleting car, but also card in tree, then just make 
         count-=0 at that point 3) if str has has prefix in tree, ie deleting baller but ball in tree, then delete nodes from end of string till 1st leaft node of prefix ball, ie 3;
         in code just recurs till count=1, 4) if str doesn't contain another string (no other part of string contains other prefix), then just delete all nodes starting from bottom
+
+bitwise operators:
+    boolean logic like & | also work with single bits, ie 0 & 1 = 0 and 0 | 1 = 1; these bitwse operatrs also work with binary numbers by doing on each bit, ie 011 & 101 = 001; thus
+    in c code  for bits, and is sole &, r is |, xor (only one of bits 1) is ^, not is ~;
+    bitwise masking: masking is keeping change and removing desired part of info, mask defines which bits want to keep and what you want to clear, and masking is act of appling mask 
+        to value, can be done by bitwise AND in order to A) "extract" subset of bits in val; B) OR to "set" subset of bits in val, XOR to C) "toggle" subset of bits ; ex, if num is
+        00110010 and you want to set least significant to 1, remeber to set use OR, so do val | 00000001 so all other bits same and just LSB changed to 1; ex, to determine if int is
+        odd/even, can just do val & 1, b/c remember only odd num in binary base is 2^0=1, rest are even, so ANDing ..001 (ie 1 at index 0), we extract and remving all bits excpt the
+        LSB, and if value has LSB 1, & 1 returns 1 so odd, else returns 0 so even
+        rules: if want to extract and get values, use AND on mask, where indexes you want to extract you set mask=1
+        two's complement: to accomadate negative numbers and not rely purly on MSB (ie just doing sign bit 1 or 0 is wrong b/c for value 0, equals both 100 and 000 but no -0, so
+            that introuces ambiguity on whether +0 and -0 distinct or equal and difficult circuit/hardware wise), so instead consistnt method, 2's complment which still uses MSB; if
+            know original positive (ie since still use MSB,=1) and want to convert to -, then 1) bit inverse and flip digits then 2) add 1; when addin, if carrout and caryin for the 
+            left most bit are same, then ignore that value, esle overflow
+        left and right shift: left shift is << (pointing left) and right shift is >>, shift moves each bit in number to left a certain number of places, so as long as no overflow, x
+            2 b/c of powers, ie ls k bits multiplies val * 2^k; right shift divides by 2; note both ls and rs cannot have - numbers in either operands, val or the shift num; when get
+            array, order index switched, use MSB for last arr slot and LSB for index 0; note can do binary cal on integers, ie if i=32 and do i & (1) does comparison btwn 10.. & ..01
+
+backtracking:
+    technique used to solve problems with large search space by systematically tryiing and eliminating possibilites--ie going thru maze and when getting stuck in 1 path, backtrack to
+    the function and then go other junction; to represent this maze in code, use n*n binary matrix where source m[0][0] and destination is somewere lowr right m[n-1][n-1], and to rep
+    -resent dead ends or walls, use 0 and 1 to mean block can be used in path from source to destination; to walk thru maze, do right maz[i][j+1], up maz[i-1][j] etc, and bfore movin
+    ensure you are out of matrix; thus backtracking algorithm is following, where we keep another solution array to dictate user path: if (destination reached) print solution matrix; 
+    else a) mark current cell=1 b) move left and recurs check if leads to sol c) if above not work, do for right, up, and down in same fashion d) if none of solution work, unmark cell
+    as 0 (backtrack) and return false; so algorithm is essentially 1) checking if solution, 2) else trying this path by setting=1, then 3) recurs doing movemnt in all 4 directions, if 
+    all of these don't exit and print, then returns back and know none of above solutions work, 4) hence, note this path not possible by setting=0 (backtrack) and return false, to ch-
+    eck direction and paths, just do recurse if(solveMaze(direction choice))==1, return so we dont have to try other paths right, down etc  
 */
 
 
