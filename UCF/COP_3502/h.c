@@ -28,6 +28,7 @@ hash-table:
             a) bucket hashing--hash tbale has array at each loci (double arr) so item of same index stored there, choosing size of each bucket(arrr at each index) problematic, as if
                 too small, collisions, and if too big will waste space
             b) seperate chaining--to fix issue of size of bucket, use linked list chain at each table[i] so items of same hash indx stored there, size dynamic and ! problematic
+        *note: when array too small and is smaller than hash_index from function, do hash_index % table_size to get new hash value
 
 trie:
     can use BST to store strings, where each node is char, however, this results in many comparisons while traversing through tree and also time consuming; howevr, this is even more
