@@ -5,7 +5,7 @@ Java: developed by sun micro-systems and acquired by oracle, includes the good s
 	interpretation--runs code line by line with no to minimal optimization; java is both because uses java compiler (javac/JDK) to convert into byte file then that byte file is interpreted by 
 	java(JVM, JRE) running on java virtual machine to get running code; eclipse and compilers just shell and interface to javac 
 	classes: blueprint for creating objects; package is file directory of group related classes; like functions class requires main method to run file, else will get an error (not exception b/c 
-		occur during run-time and not run yet); method is function and name methods public static, where public so method visiable and callable, and static which means method not associated with 
+		occur during run-time and not run yet); method is function and name methods public static, where public so method visible and call-able, and static which means method not associated with 
 		specific instance (object) and so can call it even without creating an object; non-static methods cannot access static methods
 	variables: same as before, but when initializing number for certain types, must cast: ie long a = 12....23l as java doesn't know if int and will get error, also need to do float f = 3.4fl
 		else will get error incompatible types and possible lossy conversion from double to float (double more accurate than float)
@@ -28,9 +28,14 @@ Java: developed by sun micro-systems and acquired by oracle, includes the good s
 		address, cannot just do == like for primitive types, instead do equals() and equalsIgnoreCase() which ignores capital and lowercase; use length() to get number of characters in strings;
 		recall ternary/conditional operator which is result = expression1? val1: val2; where if expression 1 true, result= val1, else result= val2;
 		parseInt/parseDouble: string to number conversions where Integer.parseInt(string) turns into number; java uses unicode which is international version of ascii which is hexadecimal based
-		type casting: java allows primitize types to be converted into different primitive types: implicit is automatic while explicit is manual, do explicit if converting double to int, larger 
+		type casting: java allows primitive types to be converted into different primitive types: implicit is automatic while explicit is manual, do explicit if converting double to int, larger 
 			to smaller as information loss and java produces error; for string to ints or reverse, casting occurs after string given, hence println(2+3+"Kash"+6*4) concatenates to 5kash24 noting
-			that the 6*4 must be turned into a string, 24, to then concatenate
+			that the 6*4 must be evaluated and turned into a string, 24, before concatenating
+	notes: do while does is do {}while(condition); and hence does 1 loop before checking condition and hence +1 if regular while; function order does not matter; static methods can only access 
+		other static methods and vars (hence variable outside main not accessible), ie static int val=6; just like in c, passing by value swap(a,b) does not actually swap b/c functions creates
+		new vars, however, cannot do pass by reference since no pointers in java, hence must use addition and subtraction or pass by reference with objects; constants in Java denoted final int 
+		VAL=7; if want to access other static vars do static final int...; int/int=int; int/float=float; int/double=double; ethically, must return at end and not middle
+
 		
 } 
  */
@@ -69,7 +74,15 @@ public class a {
 		double other_result = Math.sin(pi/2);
 		System.out.println(result + " " + other_result);
 		*/
-		System.out.println(1 + 5.3 * 2 + "JAVA" + 2 + 6 *4);
+		//System.out.println(1 + 5.3 * 2 + "JAVA" + 2 + 6 *4);
+		
+		int num1=5;
+		int num2=2;
+		float fnum2=2.0f;
+		double dnum2=2.0;
+		System.out.println(num1/num2); // 2
+		System.out.println((int)num1/fnum2); // 2.5 the (int) sticks to the num1
+		System.out.println(num1/dnum2); // 2.5
 		
 	}
 
