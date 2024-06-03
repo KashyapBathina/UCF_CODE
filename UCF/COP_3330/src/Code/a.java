@@ -21,8 +21,8 @@ Java: developed by sun micro-systems and acquired by oracle, includes the good s
 			ln(st.nextToken()); this breaks the string "this is a test" into tokens "this", "is", "a", "test" 
 	arithmetic: the usual +, -, *, /, % but in java modulus works for both integers and real numbers like decimals; can use math class which doesn't need import noting methods like Math.sin()
 		take in radians and not degrees; random number generation like C, and need to import class so import java.utils.Random, and then to use methods need to create object: Random rand = new
-		 Random() and actually function has default bounds [0,1) with 1 not included but parameter is upperbound so random.nextInt(7) gets 0...6;use fixed seed to generate same sequence of nums
-		 and use random seed to get different number each time which is just default if you do Random(), to get fixed do something like Random(large_num)
+		Random() and actually function has default bounds [0,1) with 1 not included but parameter is upperbound so random.nextInt(7) gets 0...6;use fixed seed to generate same sequence of nums
+		and use random seed to get different number each time which is just default if you do Random(), to get fixed do something like Random(large_num)
 	strings: class that manages strings in java; string sequence of unicode chars and not primitive like ints, chars, booleans, etc; strings are immutable which means once declared cannot be 
 		modified as memory already made and no manual allocation possible in java; hence, to modify strings use substrings; to combine simply use + "" +; when comparing strings, since strings 
 		address, cannot just do == like for primitive types, instead do equals() and equalsIgnoreCase() which ignores capital and lowercase; use length() to get number of characters in strings;
