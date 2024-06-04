@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 /*
-Programming Assignment 1 COP 3330
+Author: Kashyap Bathina--Programming Assignment 1 COP 3330
 	This program simulates shopping, printing a receipt with random details, then using user input until the user types in done, to get items bought, their price
 	and then calculating the price with the tax rate--where food items are un-taxed-- of 30% with each item, then printing the total number of items and price at 
 	the end.  
