@@ -37,36 +37,40 @@ public class Bathina_Kashyap {
 		// looping and getting customer input; infinite loop
 		int itemCount = 0;
 		double totalPrice = 0.0;
-		while (true) {
+		boolean flag = true;
+		while (flag) {
 			// getting item name using scanner and also capitalizing 1st letter
 			System.out.print("Write item name ");
 			String itemName = sc.nextLine();
 			if (!itemName.equals(""))
 				itemName = itemName.substring(0,1).toUpperCase() + itemName.substring(1);
 			
-			// if user types in done, break the loop 
+			// if user types in done, set flag equal to false 
 			if (itemName.equals("DONE")) {
-				break;
+				flag = false;
 			}
 			
-			// getting price of item with scanner
-			double price = 0;
-			System.out.print("Write price ");
-			double itemPrice = sc.nextDouble();
-			sc.nextLine();
-			
-			// if the item is a not a food, taxing the item by 30% or * 1.3
-			if (!(itemName.equals("food") || itemName.equals("Food"))) {
-				itemPrice *= 1.3;
+			// if item, hence not done, ask for more input
+			if (flag) {
+				// getting price of item with scanner
+				double price = 0;
+				System.out.print("Write price ");
+				double itemPrice = sc.nextDouble();
+				sc.nextLine();
+				
+				// if the item is a not a food, taxing the item by 30% or * 1.3
+				if (!(itemName.equals("food") || itemName.equals("Food"))) {
+					itemPrice *= 1.3;
+				}
+				
+				// rounding to nearest integer
+				price = (int) Math.round(itemPrice);
+				totalPrice += price;
+				itemCount++;
+				
+				// printing out item information with taxed/un-taxed price
+				System.out.println("item number " + itemCount + " " + itemName + " "+ price);
 			}
-			
-			// rounding to nearest integer
-			price = (int) Math.round(itemPrice);
-			totalPrice += price;
-			itemCount++;
-			
-			// printing out item information with taxed/un-taxed price
-			System.out.println("item number " + itemCount + " " + itemName + " "+ price);
 		}
 		
 		// printing out total number of items and price

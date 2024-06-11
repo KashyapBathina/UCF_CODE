@@ -51,7 +51,6 @@ public class a {
 	public static void main(String[] args) {
 		
 		/*
-		// TODO Auto-generated method stub
 		System.out.printf("%-10d", 5);
 		System.out.println("hello world");
 		*/
