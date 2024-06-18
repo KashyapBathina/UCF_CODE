@@ -12,7 +12,7 @@ Java: developed by sun micro-systems and acquired by oracle, includes the good s
 	output/input: system.out.print() does not pass to next line while system.out.println() passes to new line; println(someStr); = > print(someStr+”\n”); also system.out.printf() like in C and
 		%d (int), %f (float), %% (percent) %n (newline) but also formatting by writing following before the int/string/etc: %ns (s with n specified number of chars), %-ns (left justify), %04d 
 		(format string with specified num of integers which pads zeros to left), %+ (if want to show +) %^ (uppercase); no need to indicate type in print like in c; instead of printf("%d", num), 
-		can just do print(num); 
+		can just do print(num); note, what println does is print line then put new line after it
 		scanner: input uses scanner class/library to collect input and part of util package so no need  import: nextBoolean() reads boolean, nextInt() reads int, nextLine() reads
 			in next strings; like in c, problem with reading after next and nextInt because sometimes nothing next, to solve either always use scanner.nextline() (wich reads until \n) or scanner.
 			nextFoo to consume rest of line including newline; scanner is a class, so must create scanner object with Scanner scan = new Scanner(System.in) then use scan.nextLine(); to read in; 
