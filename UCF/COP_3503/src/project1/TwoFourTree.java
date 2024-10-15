@@ -26,7 +26,7 @@ public class TwoFourTree {
         }
 
         public boolean isFourNode() {
-            return false;
+            return (leftChild!=null && centerLeftChild!=null && centerRightChild!=null && rightChild!=null);
         }
 
         public boolean isRoot() {
@@ -34,15 +34,23 @@ public class TwoFourTree {
         }
 
         public TwoFourTreeItem(int value1) {
-
+        	this.value1 = value1;
+        	isLeaf = false;
         }
 
         public TwoFourTreeItem(int value1, int value2) {
-            
+        	this.value1 = value1;
+        	this.value2 = value2;
+        	values++;
+        	isLeaf = false;
         }
 
         public TwoFourTreeItem(int value1, int value2, int value3) {
-            
+        	this.value1 = value1;
+        	this.value2 = value2;
+        	this.value3 = value3;
+        	values++;
+        	isLeaf = false;
         }
 
         private void printIndents(int indent) {
@@ -88,6 +96,6 @@ public class TwoFourTree {
     }
 
     public TwoFourTree() {
-
+    	
     }
 }
