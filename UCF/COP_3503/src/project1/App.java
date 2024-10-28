@@ -187,6 +187,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         TwoFourTree tft = new TwoFourTree();
+        
         tft.addValue(2);
         tft.addValue(3);
         tft.addValue(5);
@@ -224,7 +225,7 @@ public class App {
         tft.deleteValue(97);
         System.out.println("\nWithout 97:");
         tft.printInOrder();
-        
+       
 
         executeIntCase(100, 20, true);
         executeIntCase(1000, 200, true);
@@ -232,6 +233,5 @@ public class App {
         executeIntCase(100000, 20000, true);
         executeIntCase(1000000, 200000, true);
         executeIntCase(10000000, 2000000, true);
-        
     }
 }
