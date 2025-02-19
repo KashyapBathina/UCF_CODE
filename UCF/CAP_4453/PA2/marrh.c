@@ -13,6 +13,7 @@
       CL: 
          gcc -o marrh marrh.c -lm
          ./marrh garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 145 60
+         ./marrh garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 0.023
 
 */
 
@@ -64,7 +65,7 @@ int main(argc,argv) int argc; char **argv;{
       foobar = *argv;
       sig = atof(foobar);
       
-      
+      /*
       // reading in threshold 1
       argc--; argv++;
       foobar = *argv;
@@ -74,13 +75,14 @@ int main(argc,argv) int argc; char **argv;{
       argc--; argv++;
       foobar = *argv;
       lo_threshold = atof(foobar);
+      */
       
-      /*
+      
       // reading in percent
       argc--; argv++;
       foobar = *argv;
       percent = atof(foobar);
-      */
+      
 
 
       // Write PGM header to output file
@@ -162,8 +164,8 @@ int main(argc,argv) int argc; char **argv;{
             if ((convx[i][j])==0.0){
                convx[i][j]=0.00001;
             }
-            int slope = convy[i][j]/convx[i][j];
-                     // Vertical edges
+            double slope = convy[i][j]/convx[i][j];
+            // horizontal 
             if((slope <= 0.4142) && (slope > -0.4142)) {
                if((ival[i][j] > ival[i][j-1]) && (ival[i][j] > ival[i][j+1])) {
                   cand[i][j] = 255;
@@ -175,13 +177,13 @@ int main(argc,argv) int argc; char **argv;{
                   cand[i][j] = 255;
                }
             }
-            // Horizontal edges
+            // Diagonal (negative slope)
             else if((slope <= -0.4142) && (slope > -2.4142)) {
                if((ival[i][j] > ival[i+1][j-1]) && (ival[i][j] > ival[i-1][j+1])) {
                   cand[i][j] = 255;
                }
             }
-            // Diagonal edges (negative slope)
+            // vertical
             else {
                if((ival[i][j] > ival[i-1][j]) && (ival[i][j] > ival[i+1][j])) {
                   cand[i][j] = 255;
@@ -190,6 +192,7 @@ int main(argc,argv) int argc; char **argv;{
          }
       }
 
+      
       // copying over peaks array since real peaks array changed during thresholding
       for (i=0; i<PICSIZE; i++) {
          for (j=0; j<PICSIZE; j++) {
@@ -197,7 +200,7 @@ int main(argc,argv) int argc; char **argv;{
          }
       }
           
-      /*
+      
       // code to automatically get high and low thresholds     
       // Compute histogram of scaled magnitudes
       for(i=mr; i<256-mr; i++) {
@@ -220,7 +223,7 @@ int main(argc,argv) int argc; char **argv;{
       }
       hi_threshold = i;  // This is our high threshold
       lo_threshold = hi_threshold * 0.35;  // Low threshold is 35% of high threshold
-      */
+      
      
 
       
@@ -245,7 +248,7 @@ int main(argc,argv) int argc; char **argv;{
          moretodo = 0;
          for (i=mr;i<256-mr;i++) {
             for (j=mr;j<256-mr;j++) {
-               if (cand[i][j]==255){
+               if (cand[i][j]==255 && final[i][j]!=255){
                   for (int p=-1; p<=1; p++) {
                      for (int q=-1; q<=1; q++) {
                         if (final[i+p][j+q]==255){
@@ -268,28 +271,12 @@ int main(argc,argv) int argc; char **argv;{
                // magnitude output file
                ival[i][j] = (ival[i][j] / maxival) * 255;            
                fprintf(fo1,"%c",(char)((int)(ival[i][j])));
-               
 
                // peaks output file
                fprintf(fo2,"%c",(char)((int)(peaks[i][j])));
                
                // final output file
                fprintf(fo3,"%c",(char)((int)(final[i][j])));
-               /*
-               // High threshold output
-               if (ival[i][j] > hi_threshold) {
-                  fprintf(fo2, "%c", (char)255);
-               } else {
-                  fprintf(fo2, "%c", (char)0);
-               }
-
-               // Low threshold output
-               if (ival[i][j] > lo_threshold) {
-                  fprintf(fo3, "%c", (char)255);
-               } else {
-                  fprintf(fo3, "%c", (char)0);
-               }
-               */
 
             }
          }
