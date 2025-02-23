@@ -11,9 +11,9 @@
       High Threshold: 110
       Low Threshold: 40
       CL: 
-         gcc -o marrh marrh.c -lm
-         ./marrh garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 145 60
-         ./marrh garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 0.023
+         gcc -o canny canny.c -lm
+         ./canny garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 100 35
+         ./canny garb34.pgm magnitude.pgm peaks.pgm final.pgm 1.0 0.023
 
 */
 

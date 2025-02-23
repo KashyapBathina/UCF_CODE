@@ -108,8 +108,7 @@ h1{
     tr {
     border: none;
     cursor: pointer;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    
     justify-content: flex-start;
     }
 
@@ -134,4 +133,14 @@ h1{
 
     .hide-row {
     display: none;
+    }
+
+    
+    .logout-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
     }
